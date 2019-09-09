@@ -1,6 +1,6 @@
 #!/bin/bash
 #lic:mpl2,2019,gardsted,github
-export caster=$(cd $(dirname $0)/..; pwd)
+export robotemp=$(cd $(dirname $0)/..; pwd)
 
 # get 'name' from the querystring
 declare -A param   
