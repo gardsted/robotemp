@@ -1,0 +1,23 @@
+#!/bin/bash
+#lic:mpl2,2019,gardsted,github
+export caster=$(cd $(dirname $0)/..; pwd)
+
+# get 'name' from the querystring
+declare -A param   
+while IFS='=' read -r -d '&' key value && [[ -n "$key" ]]; do
+    param["$key"]=$value
+done <<<"${QUERY_STRING}&"
+
+
+statuscode=200
+[ -n "${param[name]}" ] && statuscode=200 || statuscode=404
+echo Content-Type: text/plain
+echo Status: ${statuscode}
+echo
+[ "${statuscode}" = "200" ] \
+    && echo hello "${param[name]}" \
+    || echo name not found - you must supply '?name=henry' or similar in the url
+echo
+echo Here is Your cgi-environment
+echo
+env

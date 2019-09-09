@@ -1,0 +1,4 @@
+#!/bin/bash
+#lic:mpl2,2019,gardsted,github
+[ -z "${robotemp}" ] && echo robotemp not defined && exit 1
+stdbuf -oL -eL ${robotemp}/shell/robotemp.sh --robo-program=robotemp
